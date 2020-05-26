@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Mars Rover</string>
+
+    <string name="crash_activity_message">An unexpected error has occurred. Sorry for the inconvenience.</string>
+    <string name="crash_activity_restart_button">RESTART APP</string>
+    <string name="crash_activity_logcat_button">LOGCAT</string>
+    <string name="crash_activity_clipboard_button">COPY TO CLIPBOARD</string>
+    <string name="crash_activity_snackbar_successful_title">Copied</string>
+    <string name="crash_activity_snackbar_successful_action">OKAY</string>
+
+    <string name="unknown_error">Unknown error</string>
+    <string name="retry">Retry</string>
+</resources>

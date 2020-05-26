@@ -1,0 +1,45 @@
+ext {
+    //android
+    minSdkVersion = 21
+    targetSdkVersion = 29
+    versionCode = 1
+    versionName = "1.0"
+    androidCompileSdkVersion = 29
+    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    //libraries
+    //rx
+    rxKotlinVersion = '2.3.0'
+    rxAndroidVersion = '2.1.1'
+    rxJavaVersion = '2.2.10'
+    rxBindingVersion = '3.1.0'
+    //android
+    supportVersion = '1.1.0-rc01'
+    //android KTX libs
+    coreKtxVersion = '1.2.0'
+    //android UI libs
+    constraintLayoutVersion = '2.0.0-beta6'
+    materialVersion = '1.1.0'
+    shimmerVersion = '0.5.0'
+    //android architecture component
+    navigationVersion = '2.2.2'
+    lifecycleVersion = '2.2.0'
+    //glide
+    glideVersion = '4.11.0'
+    //customactivityoncrash
+    customactivityoncrashVersion = '2.3.0'
+    //dependency injection
+    daggerVersion = '2.27'
+    //annotation
+    annotationVersion = '1.1.0'
+    //timber
+    timberVersion = '4.7.1'
+    //test
+    mockitoKotlinVersion = '2.2.0'
+    mockitoCoreVersion = '3.3.0'
+    mockitoInlineVersion = '3.3.0'
+    espressoVersion = '3.2.0'
+    junitVersion = '4.13'
+    supportTestVersion = '1.1.1'
+    testCoreVersion = '1.1.0'
+    testExtJunitVersion = '1.0.0'
+}
