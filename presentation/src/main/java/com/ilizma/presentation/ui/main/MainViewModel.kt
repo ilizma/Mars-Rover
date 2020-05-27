@@ -22,10 +22,10 @@ class MainViewModel @Inject constructor(
     val ldRoverData: LiveData<String> = _ldRoverData
 
     fun sendData(
-        topRightCornerXCoordinate: String,
-        topRightCornerYCoordinate: String,
-        roverPositionXCoordinate: String,
-        roverPositionYCoordinate: String,
+        topRightCornerXCoordinate: Int,
+        topRightCornerYCoordinate: Int,
+        roverPositionXCoordinate: Int,
+        roverPositionYCoordinate: Int,
         roverDirection: String,
         roverMovements: String
     ) {

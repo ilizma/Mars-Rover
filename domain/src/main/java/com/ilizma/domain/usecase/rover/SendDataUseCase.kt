@@ -22,10 +22,10 @@ class SendDataUseCase @Inject constructor(
 }
 
 class SendDataParams(
-    val topRightCornerXCoordinate: String,
-    val topRightCornerYCoordinate: String,
-    val roverPositionXCoordinate: String,
-    val roverPositionYCoordinate: String,
+    val topRightCornerXCoordinate: Int,
+    val topRightCornerYCoordinate: Int,
+    val roverPositionXCoordinate: Int,
+    val roverPositionYCoordinate: Int,
     val roverDirection: String,
     val roverMovements: String
 )
