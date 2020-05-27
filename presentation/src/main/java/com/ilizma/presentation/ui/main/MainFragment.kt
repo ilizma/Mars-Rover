@@ -80,7 +80,7 @@ class MainFragment : BaseFragment() {
             roverPositionYCoordinateObservable,
             roverDirectionObservable,
             roverMovementsObservable,
-            Function6 { topRightCornerXCoordinateValid, topRightCornerYCoordinateValid, roverPositionXCoordinateValid, roverPositionYCoordinateValid, roverDirectionValid, roverMovementsValid ->
+            Function6 { topRightCornerXCoordinateValid: Boolean, topRightCornerYCoordinateValid: Boolean, roverPositionXCoordinateValid: Boolean, roverPositionYCoordinateValid: Boolean, roverDirectionValid: Boolean, roverMovementsValid: Boolean ->
                 topRightCornerXCoordinateValid && topRightCornerYCoordinateValid && roverPositionXCoordinateValid && roverPositionYCoordinateValid && roverDirectionValid && roverMovementsValid
             }
         )
