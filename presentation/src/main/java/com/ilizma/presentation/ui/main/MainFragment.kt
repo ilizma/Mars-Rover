@@ -209,7 +209,8 @@ class MainFragment : BaseFragment() {
     }
 
     private fun showResult(result: String) {
-        //TODO
+        val fragment = ResultDialogFragment.getFragment(result)
+        showDialog(fragment)
     }
 
 }
