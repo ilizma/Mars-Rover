@@ -1,5 +1,7 @@
 package com.ilizma.presentation.extensions
 
+import java.util.regex.Pattern
+
 private const val NORTH = "N"
 private const val EAST = "E"
 private const val SOUTH = "S"
@@ -9,12 +11,6 @@ private const val RIGHT = "R"
 private const val MOVE = "M"
 
 fun String.isACardinalPoint() =
-    this.length == 1 && (this.equals(NORTH, ignoreCase = true)
-            || this.equals(EAST, ignoreCase = true)
-            || this.equals(SOUTH, ignoreCase = true)
-            || this.equals(WEST, ignoreCase = true))
+    this.length == 1 && (this == NORTH || this == EAST || this == SOUTH || this == WEST)
 
-fun String.isAMovement() =
-    this.length == 1 && (this.contains(LEFT, ignoreCase = true)
-            || this.contains(RIGHT, ignoreCase = true)
-            || this.contains(MOVE, ignoreCase = true))
+fun String.isAMovement() = Pattern.matches(".*[$LEFT$RIGHT$MOVE]", this)
