@@ -172,7 +172,7 @@ class MainFragment : BaseFragment() {
                 false
             }
             else -> {
-                roverDirectionInputLayout.error = null
+                roverDirectionInputLayout.helperText = getString(R.string.direction_helper)
                 true
             }
         }
@@ -188,13 +188,13 @@ class MainFragment : BaseFragment() {
                 false
             }
             else -> {
-                roverMovementsInputLayout.error = null
+                roverMovementsInputLayout.helperText = getString(R.string.movements_helper)
                 true
             }
         }
 
     private fun isOutsidePlateau(text: CharSequence, etv: EditText) =
-        text.toString().toInt() > etv.text.toString().toInt()
+        etv.text.toString().isEmpty() || text.toString().toInt() > etv.text.toString().toInt()
 
     private fun setUpViewModel() {
         mainViewModel = viewModel(viewModelFactory.get()) {
@@ -207,7 +207,7 @@ class MainFragment : BaseFragment() {
 
     private fun handleLoadingState(loading: Boolean) {
         if (loading) {
-            sendBtn.gone()
+            sendBtn.invisible()
             sendProgressBar.visible()
         } else {
             sendProgressBar.gone()

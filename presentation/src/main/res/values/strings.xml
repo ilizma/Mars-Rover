@@ -23,7 +23,7 @@
     <string name="movements_helper">L and R to move 90º and M to move one grid</string>
     <string name="send">Send</string>
     <string name="empty_error">Can\'t be empty</string>
-    <string name="outside_error">Must be smaller than the topRight</string>
+    <string name="outside_error">Must be the same or smaller than the topRight</string>
     <string name="cardinal_error">Must be one of the four cardinal points: N E S W</string>
     <string name="movement_error">Can only contains L, R and M</string>
     <string name="ok">OK</string>

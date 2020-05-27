@@ -74,10 +74,9 @@
                 android:hint="@string/y_coordinate_hint"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:layout_constraintBottom_toBottomOf="@+id/topRightCornerXCoordinateInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/topRightCornerXCoordinateInputLayout"
-                app:layout_constraintTop_toTopOf="@+id/topRightCornerXCoordinateInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/topRightCornerTitleTxv">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/topRightCornerYCoordinateEtv"
@@ -92,6 +91,7 @@
                 android:id="@+id/roverPositionTxv"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_title_top_margin"
                 android:text="@string/rover_initial_position_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -128,10 +128,9 @@
                 android:hint="@string/y_coordinate_hint"
                 app:endIconMode="clear_text"
                 app:errorEnabled="true"
-                app:layout_constraintBottom_toBottomOf="@+id/roverPositionXCoordinateInputLayout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/roverPositionXCoordinateInputLayout"
-                app:layout_constraintTop_toTopOf="@+id/roverPositionXCoordinateInputLayout">
+                app:layout_constraintTop_toBottomOf="@+id/roverPositionTxv">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/roverPositionYCoordinateEtv"
@@ -146,6 +145,7 @@
                 android:id="@+id/roverDirectionTxv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_title_top_margin"
                 android:text="@string/rover_initial_direction_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -171,7 +171,7 @@
                     android:id="@+id/roverDirectionEtv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="textNoSuggestions|textCapCharacters"
                     tools:ignore="Autofill" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -180,6 +180,7 @@
                 android:id="@+id/roverMovementsTxv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_title_top_margin"
                 android:text="@string/rover_movements_title"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -205,7 +206,7 @@
                     android:id="@+id/roverMovementsEtv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"
+                    android:inputType="textNoSuggestions|textCapCharacters"
                     tools:ignore="Autofill" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -214,6 +215,8 @@
                 android:id="@+id/sendBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
                 android:enabled="false"
                 android:text="@string/send"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -224,10 +227,13 @@
                 android:id="@+id/sendProgressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/vertical_margin"
+                android:layout_marginBottom="@dimen/vertical_margin"
                 android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/sendBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/roverMovementsInputLayout"
+                app:layout_constraintTop_toTopOf="@+id/sendBtn"
                 tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
