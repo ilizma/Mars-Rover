@@ -3,6 +3,7 @@ package com.ilizma.presentation.ui.main
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ilizma.domain.usecase.rover.SendDataParams
 import com.ilizma.domain.usecase.rover.SendDataUseCase
 import com.ilizma.presentation.ui.base.BaseViewModel
 import dagger.Lazy
@@ -20,8 +21,24 @@ class MainViewModel @Inject constructor(
     private val _ldRoverData = MutableLiveData<String>()
     val ldRoverData: LiveData<String> = _ldRoverData
 
-    fun sendData() {
-        sendDataUseCase(Unit)
+    fun sendData(
+        topRightCornerXCoordinate: String,
+        topRightCornerYCoordinate: String,
+        roverPositionXCoordinate: String,
+        roverPositionYCoordinate: String,
+        roverDirection: String,
+        roverMovements: String
+    ) {
+        sendDataUseCase(
+            SendDataParams(
+                topRightCornerXCoordinate,
+                topRightCornerYCoordinate,
+                roverPositionXCoordinate,
+                roverPositionYCoordinate,
+                roverDirection,
+                roverMovements
+            )
+        )
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { loading(true) }
             .doAfterTerminate { loading(false) }

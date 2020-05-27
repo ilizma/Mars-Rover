@@ -91,7 +91,14 @@ class MainFragment : BaseFragment() {
             .addTo(compositeDisposable)
 
         sendBtn.setOnReactiveClickListener {
-            mainViewModel.sendData()
+            mainViewModel.sendData(
+                topRightCornerXCoordinate = topRightCornerXCoordinateEtv.text.toString(),
+                topRightCornerYCoordinate = topRightCornerYCoordinateEtv.text.toString(),
+                roverPositionXCoordinate = roverPositionXCoordinateEtv.text.toString(),
+                roverPositionYCoordinate = roverPositionYCoordinateEtv.text.toString(),
+                roverDirection = roverDirectionEtv.text.toString(),
+                roverMovements = roverMovementsEtv.text.toString()
+            )
         }
     }
 
