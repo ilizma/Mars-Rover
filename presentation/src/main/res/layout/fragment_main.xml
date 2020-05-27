@@ -21,4 +21,217 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/topRightCornerTitleTxv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/top_right_corner_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/topRightCornerXCoordinateInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/x_coordinate_hint"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@+id/topRightCornerYCoordinateInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topRightCornerTitleTxv">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/topRightCornerXCoordinateEtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="Autofill" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/topRightCornerYCoordinateInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/y_coordinate_hint"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toBottomOf="@+id/topRightCornerXCoordinateInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/topRightCornerXCoordinateInputLayout"
+                app:layout_constraintTop_toTopOf="@+id/topRightCornerXCoordinateInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/topRightCornerYCoordinateEtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="Autofill" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/roverPositionTxv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/rover_initial_position_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topRightCornerXCoordinateInputLayout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/roverPositionXCoordinateInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/x_coordinate_hint"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintEnd_toStartOf="@+id/roverPositionYCoordinateInputLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverPositionTxv">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/roverPositionXCoordinateEtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="Autofill" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/roverPositionYCoordinateInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/y_coordinate_hint"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:layout_constraintBottom_toBottomOf="@+id/roverPositionXCoordinateInputLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/roverPositionXCoordinateInputLayout"
+                app:layout_constraintTop_toTopOf="@+id/roverPositionXCoordinateInputLayout">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/roverPositionYCoordinateEtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    tools:ignore="Autofill" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/roverDirectionTxv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rover_initial_direction_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverPositionXCoordinateInputLayout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/roverDirectionInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/direction_hint"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="@string/direction_helper"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverDirectionTxv">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/roverDirectionEtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="Autofill" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/roverMovementsTxv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rover_movements_title"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverDirectionInputLayout" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/roverMovementsInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/movements_hint"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:helperText="@string/movements_helper"
+                app:helperTextEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverMovementsTxv">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/roverMovementsEtv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    tools:ignore="Autofill" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/sendBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/send"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverMovementsInputLayout" />
+
+            <ProgressBar
+                android:id="@+id/sendProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roverMovementsInputLayout"
+                tools:visibility="visible" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
 </LinearLayout>
