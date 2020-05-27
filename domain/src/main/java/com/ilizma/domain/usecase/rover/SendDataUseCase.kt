@@ -7,9 +7,18 @@ import javax.inject.Inject
 
 class SendDataUseCase @Inject constructor(
     private val repository: Repository
-) : SingleUseCase<String, Unit> {
+) : SingleUseCase<String, SendDataParams> {
 
-    override fun invoke(params: Unit): Single<String> =
+    override fun invoke(params: SendDataParams): Single<String> =
         repository.sendData()
 
 }
+
+class SendDataParams(
+    val topRightCornerXCoordinate: String,
+    val topRightCornerYCoordinate: String,
+    val roverPositionXCoordinate: String,
+    val roverPositionYCoordinate: String,
+    val roverDirection: String,
+    val roverMovements: String
+)
