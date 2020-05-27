@@ -9,9 +9,16 @@ class SendDataUseCase @Inject constructor(
     private val repository: Repository
 ) : SingleUseCase<String, SendDataParams> {
 
-    override fun invoke(params: SendDataParams): Single<String> =
-        repository.sendData()
-
+    override fun invoke(params: SendDataParams): Single<String> = with(params) {
+        repository.sendData(
+            topRightCornerXCoordinate = topRightCornerXCoordinate,
+            topRightCornerYCoordinate = topRightCornerYCoordinate,
+            roverPositionXCoordinate = roverPositionXCoordinate,
+            roverPositionYCoordinate = roverPositionYCoordinate,
+            roverDirection = roverDirection,
+            roverMovements = roverMovements
+        )
+    }
 }
 
 class SendDataParams(

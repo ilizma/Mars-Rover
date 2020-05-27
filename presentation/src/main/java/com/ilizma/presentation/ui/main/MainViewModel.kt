@@ -31,19 +31,19 @@ class MainViewModel @Inject constructor(
     ) {
         sendDataUseCase(
             SendDataParams(
-                topRightCornerXCoordinate,
-                topRightCornerYCoordinate,
-                roverPositionXCoordinate,
-                roverPositionYCoordinate,
-                roverDirection,
-                roverMovements
+                topRightCornerXCoordinate = topRightCornerXCoordinate,
+                topRightCornerYCoordinate = topRightCornerYCoordinate,
+                roverPositionXCoordinate = roverPositionXCoordinate,
+                roverPositionYCoordinate = roverPositionYCoordinate,
+                roverDirection = roverDirection,
+                roverMovements = roverMovements
             )
         )
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { loading(true) }
             .doAfterTerminate { loading(false) }
-            .subscribe({ login ->
-                _ldRoverData.value = login
+            .subscribe({ data ->
+                _ldRoverData.value = data
             }, { throwable ->
                 //TODO handleFailure(throwable) { lists() }
             })

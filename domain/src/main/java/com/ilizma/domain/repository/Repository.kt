@@ -4,6 +4,13 @@ import io.reactivex.Single
 
 interface Repository {
 
-    fun sendData(): Single<String>
+    fun sendData(
+        topRightCornerXCoordinate: String,
+        topRightCornerYCoordinate: String,
+        roverPositionXCoordinate: String,
+        roverPositionYCoordinate: String,
+        roverDirection: String,
+        roverMovements: String
+    ): Single<String>
 
 }
