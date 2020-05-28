@@ -44,8 +44,6 @@ class RemoteDataSource @Inject constructor(
                 emitter.onSuccess(result)
             } catch (e: Throwable) {
                 when (e) {
-                    is ParseFailed -> emitter.tryOnError(Failure.ParseFailed(e.message!!))
-                    is NoData -> emitter.tryOnError(Failure.NoData(e.message!!))
                     is IncorrectMovement -> emitter.tryOnError(Failure.IncorrectMovement(e.message!!))
                     is IncorrectDirection -> emitter.tryOnError(Failure.IncorrectDirection(e.message!!))
                     else -> emitter.tryOnError(e)
