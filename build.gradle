@@ -2,9 +2,12 @@
 apply from: 'dependencies.gradle'
 
 buildscript {
-    ext.buildGradleVersion = '3.6.3'
-    ext.kotlinVersion = '1.3.72'
-    ext.safeArgsVersion = '2.3.0-alpha06'
+    ext {
+        kotlin_version = '1.3.72'
+        buildGradleVersion = '3.6.3'
+        kotlinVersion = '1.3.72'
+        safeArgsVersion = '2.3.0-alpha06'
+    }
     repositories {
         google()
         jcenter()

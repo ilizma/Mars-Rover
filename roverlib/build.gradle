@@ -1,7 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -30,18 +29,15 @@ android {
 }
 
 dependencies {
-    //rxJava
-    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
-    //dependency injection
-    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
-    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
-
-    // region implementations in data and app gradles
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    //rxKotlin
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
     //moshi
-    api "com.squareup.moshi:moshi-kotlin:$moshiVersion"
-    // endregion
-
-    implementation project(':domain')
-    implementation project(':roverlib')
-    testImplementation project(path: ':domain', configuration: 'unitTestImplementation')
+    implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    //UnitTest
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoInlineVersion"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion"
 }

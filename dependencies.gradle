@@ -31,10 +31,10 @@ ext {
     customactivityoncrashVersion = '2.3.0'
     //dependency injection
     daggerVersion = '2.27'
-    //annotation
-    annotationVersion = '1.1.0'
     //timber
     timberVersion = '4.7.1'
+    //annotation
+    annotationVersion = '1.1.0'
     //test
     mockitoKotlinVersion = '2.2.0'
     mockitoCoreVersion = '3.3.0'
