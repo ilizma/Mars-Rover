@@ -33,23 +33,23 @@ class RepositoryImplUnitTest {
         val result = "1 3 N"
         whenever(
             remoteDataSource.sendData(
-                anyInt(),
-                anyInt(),
-                anyInt(),
-                anyInt(),
-                anyString(),
-                anyString()
+                topRightCornerXCoordinate = anyInt(),
+                topRightCornerYCoordinate = anyInt(),
+                roverPositionXCoordinate = anyInt(),
+                roverPositionYCoordinate = anyInt(),
+                roverDirection = anyString(),
+                roverMovements = anyString()
             )
         )
             .doReturn(getSingleSuccess(result))
 
         val testObserver = repositoryImpl.sendData(
-            anyInt(),
-            anyInt(),
-            anyInt(),
-            anyInt(),
-            anyString(),
-            anyString()
+            topRightCornerXCoordinate = anyInt(),
+            topRightCornerYCoordinate = anyInt(),
+            roverPositionXCoordinate = anyInt(),
+            roverPositionYCoordinate = anyInt(),
+            roverDirection = anyString(),
+            roverMovements = anyString()
         ).test()
 
         testObserver.assertGeneralsSuccess {
@@ -63,23 +63,23 @@ class RepositoryImplUnitTest {
     fun `sendData should return Failure`() {
         whenever(
             remoteDataSource.sendData(
-                anyInt(),
-                anyInt(),
-                anyInt(),
-                anyInt(),
-                anyString(),
-                anyString()
+                topRightCornerXCoordinate = anyInt(),
+                topRightCornerYCoordinate = anyInt(),
+                roverPositionXCoordinate = anyInt(),
+                roverPositionYCoordinate = anyInt(),
+                roverDirection = anyString(),
+                roverMovements = anyString()
             )
         )
             .doReturn(getSingleError())
 
         val testObserver = repositoryImpl.sendData(
-            anyInt(),
-            anyInt(),
-            anyInt(),
-            anyInt(),
-            anyString(),
-            anyString()
+            topRightCornerXCoordinate = anyInt(),
+            topRightCornerYCoordinate = anyInt(),
+            roverPositionXCoordinate = anyInt(),
+            roverPositionYCoordinate = anyInt(),
+            roverDirection = anyString(),
+            roverMovements = anyString()
         ).test()
 
         testObserver.assertGeneralsError()
