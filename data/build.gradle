@@ -42,5 +42,6 @@ dependencies {
     // endregion
 
     implementation project(':domain')
+    implementation project(':roverlib')
     testImplementation project(path: ':domain', configuration: 'unitTestImplementation')
 }

@@ -7,7 +7,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-abstract class JsonModule {
+class JsonModule {
 
     @Provides
     @Singleton

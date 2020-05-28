@@ -4,6 +4,7 @@ import com.ilizma.data.extensions.assertGeneralsError
 import com.ilizma.data.extensions.assertGeneralsSuccess
 import com.ilizma.data.extensions.getSingleError
 import com.ilizma.data.extensions.getSingleSuccess
+import com.ilizma.roverlib.Rover
 import com.nhaarman.mockitokotlin2.whenever
 import com.squareup.moshi.Moshi
 import org.junit.Before
@@ -22,9 +23,12 @@ class RemoteDataSourceUnitTest {
     @Mock
     private lateinit var moshi: Moshi
 
+    @Mock
+    private lateinit var rover: Rover
+
     @Before
     fun setUp() {
-        remoteDataSource = RemoteDataSource(moshi)
+        remoteDataSource = RemoteDataSource(moshi, rover)
     }
 
     // region Success cases
