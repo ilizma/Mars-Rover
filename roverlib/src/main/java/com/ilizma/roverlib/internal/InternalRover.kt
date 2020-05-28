@@ -1,6 +1,7 @@
 package com.ilizma.roverlib.internal
 
 import com.ilizma.roverlib.Rover
+import com.ilizma.roverlib.base.Failure
 import com.ilizma.roverlib.entity.DataJson
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -40,13 +41,13 @@ internal class InternalRover : Rover {
                             SOUTH -> if (roverPositionY > 0) roverPositionY--
                             WEST -> if (roverPositionX > 0) roverPositionX--
                         }
-                        else -> throw Exception("Incorrect movement, only L R M accepted")
+                        else -> throw Failure.IncorrectMovement("Incorrect movement, only L R M accepted")
                     }
                 }
                 return "$roverPositionX $roverPositionY $direction"
-            } ?: throw Exception("No data entered")
+            } ?: throw Failure.NoData("No data entered")
         } catch (e: Exception) {
-            throw Exception("${DataJson::class.java.simpleName} parse failed: $e")
+            throw Failure.ParseFailed("${DataJson::class.java.simpleName} parse failed: $e")
         }
     }
 
@@ -56,7 +57,7 @@ internal class InternalRover : Rover {
             EAST -> NORTH
             SOUTH -> EAST
             WEST -> SOUTH
-            else -> throw Exception("Incorrect direction, only N E S W accepted")
+            else -> throw Failure.IncorrectDirection("Incorrect direction, only N E S W accepted")
         }
     }
 
@@ -66,7 +67,7 @@ internal class InternalRover : Rover {
             EAST -> SOUTH
             SOUTH -> WEST
             WEST -> NORTH
-            else -> throw Exception("Incorrect direction, only N E S W accepted")
+            else -> throw Failure.IncorrectDirection("Incorrect direction, only N E S W accepted")
         }
     }
 

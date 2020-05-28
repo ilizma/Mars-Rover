@@ -35,6 +35,8 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
     //moshi
     implementation "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    //annotation
+    implementation "androidx.annotation:annotation:$annotationVersion"
     //UnitTest
     testImplementation "junit:junit:$junitVersion"
     testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
