@@ -2,10 +2,10 @@ package com.ilizma.roverlib.factory
 
 import com.ilizma.roverlib.entity.DataJson
 
-class DataJsonFactory {
+internal class DataJsonFactory {
 
     companion object {
-        fun providesDataJson(
+        internal fun providesDataJson(
             topRightCorner: DataJson.TopRightCorner = providesTopRightCorner(),
             roverPosition: DataJson.RoverPosition = providesRoverPosition(),
             roverDirection: String = "N",
