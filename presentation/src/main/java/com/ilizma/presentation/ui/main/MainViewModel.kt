@@ -22,28 +22,28 @@ class MainViewModel @Inject constructor(
     val ldRoverData: LiveData<String> = _ldRoverData
 
     fun sendData(
-        topRightCornerXCoordinate: String,
-        topRightCornerYCoordinate: String,
-        roverPositionXCoordinate: String,
-        roverPositionYCoordinate: String,
+        topRightCornerXCoordinate: Int,
+        topRightCornerYCoordinate: Int,
+        roverPositionXCoordinate: Int,
+        roverPositionYCoordinate: Int,
         roverDirection: String,
         roverMovements: String
     ) {
         sendDataUseCase(
             SendDataParams(
-                topRightCornerXCoordinate,
-                topRightCornerYCoordinate,
-                roverPositionXCoordinate,
-                roverPositionYCoordinate,
-                roverDirection,
-                roverMovements
+                topRightCornerXCoordinate = topRightCornerXCoordinate,
+                topRightCornerYCoordinate = topRightCornerYCoordinate,
+                roverPositionXCoordinate = roverPositionXCoordinate,
+                roverPositionYCoordinate = roverPositionYCoordinate,
+                roverDirection = roverDirection,
+                roverMovements = roverMovements
             )
         )
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { loading(true) }
             .doAfterTerminate { loading(false) }
-            .subscribe({ login ->
-                _ldRoverData.value = login
+            .subscribe({ data ->
+                _ldRoverData.value = data
             }, { throwable ->
                 //TODO handleFailure(throwable) { lists() }
             })

@@ -92,10 +92,10 @@ class MainFragment : BaseFragment() {
 
         sendBtn.setOnReactiveClickListener {
             mainViewModel.sendData(
-                topRightCornerXCoordinate = topRightCornerXCoordinateEtv.text.toString(),
-                topRightCornerYCoordinate = topRightCornerYCoordinateEtv.text.toString(),
-                roverPositionXCoordinate = roverPositionXCoordinateEtv.text.toString(),
-                roverPositionYCoordinate = roverPositionYCoordinateEtv.text.toString(),
+                topRightCornerXCoordinate = topRightCornerXCoordinateEtv.text.toString().toInt(),
+                topRightCornerYCoordinate = topRightCornerYCoordinateEtv.text.toString().toInt(),
+                roverPositionXCoordinate = roverPositionXCoordinateEtv.text.toString().toInt(),
+                roverPositionYCoordinate = roverPositionYCoordinateEtv.text.toString().toInt(),
                 roverDirection = roverDirectionEtv.text.toString(),
                 roverMovements = roverMovementsEtv.text.toString()
             )

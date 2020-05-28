@@ -66,7 +66,7 @@ fun <T : Any> Flowable<T>.testAwait(): TestSubscriber<T> = this.test().apply {
 
 fun <T> getSingleSuccess(value: T): Single<T> = Single.just(value)
 
-fun <T> getSingleError(value: Throwable): Single<T> = Single.error(value)
+fun <T> getSingleError(value: Throwable = Throwable()): Single<T> = Single.error(value)
 
 fun <T> getSingleListSuccess(value: List<T>): Single<List<T>> = Single.just(value)
 

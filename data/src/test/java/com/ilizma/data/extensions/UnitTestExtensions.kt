@@ -48,7 +48,7 @@ fun <T : Any> TestObserver<T>.assertGeneralsError(asserts: (Throwable) -> Boolea
 
 fun <T> getSingleSuccess(value: T): Single<T> = Single.just(value)
 
-fun <T> getSingleError(value: Throwable): Single<T> = Single.error(value)
+fun <T> getSingleError(value: Throwable = Throwable()): Single<T> = Single.error(value)
 
 fun getCompletableComplete(): Completable = Completable.complete()
 

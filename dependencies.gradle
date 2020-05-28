@@ -23,6 +23,8 @@ ext {
     //android architecture component
     navigationVersion = '2.2.2'
     lifecycleVersion = '2.2.0'
+    //moshi
+    moshiVersion = '1.9.2'
     //glide
     glideVersion = '4.11.0'
     //customactivityoncrash
