@@ -44,13 +44,6 @@ class ResultDialogFragment : DialogFragment() {
             params.width = ConstraintLayout.LayoutParams.MATCH_PARENT
             params.height = ConstraintLayout.LayoutParams.WRAP_CONTENT
             window.attributes = params
-
-            val color = ColorDrawable(Color.TRANSPARENT)
-            val inset = InsetDrawable(
-                color,
-                resources.getDimension(R.dimen.dialog_horizontal_margin).toInt()
-            )
-            window.setBackgroundDrawable(inset)
         }
     }
 
