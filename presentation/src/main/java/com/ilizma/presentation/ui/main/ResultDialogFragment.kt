@@ -12,7 +12,6 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import com.ilizma.presentation.R
 import com.ilizma.presentation.extensions.getSerializableParam
-import com.ilizma.presentation.extensions.inflate
 import com.ilizma.presentation.extensions.setOnReactiveClickListener
 import com.ilizma.presentation.extensions.setSerializableParam
 import kotlinx.android.synthetic.main.fragment_result_dialog.*
@@ -28,7 +27,7 @@ class ResultDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return context?.let { safeContext ->
-            Dialog(safeContext, R.style.DialogFragment)
+            Dialog(safeContext, R.style.AppTheme_DialogFragment)
         } ?: super.onCreateDialog(savedInstanceState)
     }
 
@@ -36,7 +35,7 @@ class ResultDialogFragment : DialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = container?.inflate(R.layout.fragment_result_dialog)
+    ): View? = inflater.inflate(R.layout.fragment_result_dialog, container, false)
 
     override fun onResume() {
         super.onResume()
@@ -58,7 +57,7 @@ class ResultDialogFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val result = getSerializableParam<String>()
+        val result: String = getSerializableParam()
         resultTxv.text = getString(R.string.result, result)
         okBtn.setOnReactiveClickListener {
             dismiss()

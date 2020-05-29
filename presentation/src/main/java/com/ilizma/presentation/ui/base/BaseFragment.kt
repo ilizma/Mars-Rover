@@ -53,14 +53,17 @@ abstract class BaseFragment : DaggerFragment() {
 
     protected fun showDialog(fragment: DialogFragment) {
         dismissSnackbar()
-        if (activity != null && activity?.isFinishing?.not() == true)
-            if (parentFragmentManager.isDestroyed.not() && parentFragmentManager.isStateSaved.not()) {
-                try {
-                    fragment.show(parentFragmentManager, fragment::class.simpleName)
-                } catch (e: IllegalStateException) {
-                    e.printStackTrace()
-                }
+        if (activity != null
+            && requireActivity().isFinishing.not()
+            && parentFragmentManager.isDestroyed.not()
+            && parentFragmentManager.isStateSaved.not()
+        ) {
+            try {
+                fragment.show(parentFragmentManager, fragment::class.simpleName)
+            } catch (e: IllegalStateException) {
+                e.printStackTrace()
             }
+        }
     }
 
     fun showSnackbarWithRes(
