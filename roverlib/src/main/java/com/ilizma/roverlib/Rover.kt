@@ -7,7 +7,7 @@ interface Rover {
     fun move(json: String): String
 
     class Builder {
-        fun create(): Rover {
+        fun build(): Rover {
             return InternalRover()
         }
     }
