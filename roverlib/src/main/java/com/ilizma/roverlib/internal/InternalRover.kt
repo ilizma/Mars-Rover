@@ -6,8 +6,7 @@ import com.ilizma.roverlib.base.IncorrectMovement
 import com.ilizma.roverlib.base.NoData
 import com.ilizma.roverlib.base.ParseFailed
 import com.ilizma.roverlib.entity.DataJson
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.squareup.moshi.JsonAdapter
 
 private const val NORTH = "N"
 private const val EAST = "E"
@@ -17,33 +16,31 @@ private const val LEFT = "L"
 private const val RIGHT = "R"
 private const val MOVE = "M"
 
-internal class InternalRover : Rover {
+internal class InternalRover(private val jsonAdapter: JsonAdapter<DataJson>) : Rover {
+
+    private var topRightCornerX: Int = 0
+    private var topRightCornerY: Int = 0
+    private var roverPositionX: Int = 0
+    private var roverPositionY: Int = 0
+    private lateinit var direction: String
+    private lateinit var movements: List<String>
 
     override fun move(json: String): String {
-        val moshi = Moshi.Builder()
-            .add(KotlinJsonAdapterFactory())
-            .build()
-
         try {
-            val data = moshi.adapter(DataJson::class.java).fromJson(json)
+            val data = jsonAdapter.fromJson(json)
             data?.let { safeData ->
-                val topRightCornerX = safeData.topRightCorner.xCoordinate
-                val topRightCornerY = safeData.topRightCorner.yCoordinate
-                var roverPositionX = safeData.roverPosition.xCoordinate
-                var roverPositionY = safeData.roverPosition.yCoordinate
-                var direction = safeData.roverDirection
-                val movements = safeData.movements.toList().map { it.toString() }
+                topRightCornerX = safeData.topRightCorner.xCoordinate
+                topRightCornerY = safeData.topRightCorner.yCoordinate
+                roverPositionX = safeData.roverPosition.xCoordinate
+                roverPositionY = safeData.roverPosition.yCoordinate
+                direction = safeData.roverDirection
+                movements = safeData.movements.toList().map { it.toString() }
 
                 movements.forEach { movement ->
                     when (movement) {
-                        LEFT -> direction = spinLeft(direction)
-                        RIGHT -> direction = spinRight(direction)
-                        MOVE -> when (direction) {
-                            NORTH -> if (roverPositionY < topRightCornerY) roverPositionY++
-                            EAST -> if (roverPositionX < topRightCornerX) roverPositionX++
-                            SOUTH -> if (roverPositionY > 0) roverPositionY--
-                            WEST -> if (roverPositionX > 0) roverPositionX--
-                        }
+                        LEFT -> spinLeft()
+                        RIGHT -> spinRight()
+                        MOVE -> moveOneGrid()
                         else -> throw IncorrectMovement()
                     }
                 }
@@ -54,8 +51,8 @@ internal class InternalRover : Rover {
         }
     }
 
-    private fun spinLeft(direction: String): String {
-        return when (direction) {
+    private fun spinLeft() {
+        direction = when (direction) {
             NORTH -> WEST
             EAST -> NORTH
             SOUTH -> EAST
@@ -64,13 +61,22 @@ internal class InternalRover : Rover {
         }
     }
 
-    private fun spinRight(direction: String): String {
-        return when (direction) {
+    private fun spinRight() {
+        direction = when (direction) {
             NORTH -> EAST
             EAST -> SOUTH
             SOUTH -> WEST
             WEST -> NORTH
             else -> throw IncorrectDirection()
+        }
+    }
+
+    private fun moveOneGrid() {
+        when (direction) {
+            NORTH -> if (roverPositionY < topRightCornerY) roverPositionY++
+            EAST -> if (roverPositionX < topRightCornerX) roverPositionX++
+            SOUTH -> if (roverPositionY > 0) roverPositionY--
+            WEST -> if (roverPositionX > 0) roverPositionX--
         }
     }
 
