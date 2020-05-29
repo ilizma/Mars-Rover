@@ -44,11 +44,11 @@ internal class InternalRover : Rover {
                             SOUTH -> if (roverPositionY > 0) roverPositionY--
                             WEST -> if (roverPositionX > 0) roverPositionX--
                         }
-                        else -> throw IncorrectMovement("Incorrect movement, only L R M accepted")
+                        else -> throw IncorrectMovement()
                     }
                 }
                 return "$roverPositionX $roverPositionY $direction"
-            } ?: throw NoData("No data entered")
+            } ?: throw NoData()
         } catch (e: Exception) {
             throw ParseFailed("${DataJson::class.java.simpleName} parse failed: $e")
         }
@@ -60,7 +60,7 @@ internal class InternalRover : Rover {
             EAST -> NORTH
             SOUTH -> EAST
             WEST -> SOUTH
-            else -> throw IncorrectDirection("Incorrect direction, only N E S W accepted")
+            else -> throw IncorrectDirection()
         }
     }
 
@@ -70,7 +70,7 @@ internal class InternalRover : Rover {
             EAST -> SOUTH
             SOUTH -> WEST
             WEST -> NORTH
-            else -> throw IncorrectDirection("Incorrect direction, only N E S W accepted")
+            else -> throw IncorrectDirection()
         }
     }
 
