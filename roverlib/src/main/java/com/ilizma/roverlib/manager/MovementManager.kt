@@ -1,6 +1,5 @@
-package com.ilizma.roverlib.internal
+package com.ilizma.roverlib.manager
 
-import com.ilizma.roverlib.Rover
 import com.ilizma.roverlib.base.IncorrectDirection
 import com.ilizma.roverlib.base.IncorrectMovement
 import com.ilizma.roverlib.base.NoData
@@ -16,7 +15,7 @@ private const val LEFT = "L"
 private const val RIGHT = "R"
 private const val MOVE = "M"
 
-internal class InternalRover(private val jsonAdapter: JsonAdapter<DataJson>) : Rover {
+internal class MovementManager(private val jsonAdapter: JsonAdapter<DataJson>) {
 
     private var topRightCornerX: Int = 0
     private var topRightCornerY: Int = 0
@@ -25,7 +24,7 @@ internal class InternalRover(private val jsonAdapter: JsonAdapter<DataJson>) : R
     private lateinit var direction: String
     private lateinit var movements: List<String>
 
-    override fun move(json: String): String {
+    fun move(json: String): String {
         try {
             val data = jsonAdapter.fromJson(json)
             data?.let { safeData ->
