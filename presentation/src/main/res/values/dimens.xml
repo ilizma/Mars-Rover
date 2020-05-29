@@ -3,5 +3,6 @@
     <dimen name="horizontal_margin">16dp</dimen>
     <dimen name="vertical_margin">16dp</dimen>
     <dimen name="fragment_title_top_margin">8dp</dimen>
+    <dimen name="dialog_style_margin">30dp</dimen>
     <dimen name="dialog_horizontal_margin">12dp</dimen>
 </resources>

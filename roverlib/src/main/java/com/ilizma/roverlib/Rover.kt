@@ -1,15 +1,24 @@
 package com.ilizma.roverlib
 
-import com.ilizma.roverlib.internal.InternalRover
+import com.ilizma.roverlib.entity.DataJson
+import com.ilizma.roverlib.manager.MovementManager
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-interface Rover {
+class Rover {
 
-    fun move(json: String): String
+    private lateinit var movementManager: MovementManager
 
-    class Builder {
-        fun create(): Rover {
-            return InternalRover()
-        }
+    fun move(json: String): String = movementManager.move(json)
+
+    fun build(): Rover {
+        val rover = Rover()
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+        val jsonAdapter = moshi.adapter(DataJson::class.java)
+        rover.movementManager = MovementManager(jsonAdapter)
+        return rover
     }
 
 }

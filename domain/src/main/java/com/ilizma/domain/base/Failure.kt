@@ -1,13 +1,11 @@
 package com.ilizma.domain.base
 
-sealed class Failure(message: String) : Throwable(message) {
+sealed class Failure(val msg: String, var retryAction: () -> Unit) : Throwable() {
 
-    class ParseFailed(message: String) : Failure(message)
+    class Error(msg: String) : Failure(msg, {})
 
-    class NoData(message: String) : Failure(message)
+    class IncorrectMovement(msg: String) : Failure(msg, {})
 
-    class IncorrectMovement(message: String) : Failure(message)
-
-    class IncorrectDirection(message: String) : Failure(message)
+    class IncorrectDirection(msg: String) : Failure(msg, {})
 
 }

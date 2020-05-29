@@ -1,7 +1,7 @@
 package com.ilizma.marsrover.di.module.presentation
 
-import com.ilizma.presentation.ui.main.MainFragment
 import com.ilizma.marsrover.di.scope.PerView
+import com.ilizma.presentation.ui.main.MainFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

@@ -45,7 +45,16 @@ class MainViewModel @Inject constructor(
             .subscribe({ data ->
                 _ldRoverData.value = data
             }, { throwable ->
-                //TODO handleFailure(throwable) { lists() }
+                handleFailureFromThrowable(throwable) {
+                    sendData(
+                        topRightCornerXCoordinate = topRightCornerXCoordinate,
+                        topRightCornerYCoordinate = topRightCornerYCoordinate,
+                        roverPositionXCoordinate = roverPositionXCoordinate,
+                        roverPositionYCoordinate = roverPositionYCoordinate,
+                        roverDirection = roverDirection,
+                        roverMovements = roverMovements
+                    )
+                }
             })
             .addTo(compositeDisposable)
     }

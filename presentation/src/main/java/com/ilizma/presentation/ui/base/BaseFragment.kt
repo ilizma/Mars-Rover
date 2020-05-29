@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -47,33 +46,23 @@ abstract class BaseFragment : DaggerFragment() {
         super.onDestroy()
     }
 
-    protected fun dismissSnackbar() {
+    private fun dismissSnackbar() {
         snackbar?.dismiss()
     }
 
     protected fun showDialog(fragment: DialogFragment) {
         dismissSnackbar()
-        if (activity != null && activity?.isFinishing?.not() == true)
-            if (parentFragmentManager.isDestroyed.not() && parentFragmentManager.isStateSaved.not()) {
-                try {
-                    fragment.show(parentFragmentManager, fragment::class.simpleName)
-                } catch (e: IllegalStateException) {
-                    e.printStackTrace()
-                }
+        if (activity != null
+            && requireActivity().isFinishing.not()
+            && parentFragmentManager.isDestroyed.not()
+            && parentFragmentManager.isStateSaved.not()
+        ) {
+            try {
+                fragment.show(parentFragmentManager, fragment::class.simpleName)
+            } catch (e: IllegalStateException) {
+                e.printStackTrace()
             }
-    }
-
-    fun showSnackbarWithRes(
-        @StringRes title: Int,
-        @StringRes action: Int,
-        length: Int = Snackbar.LENGTH_LONG,
-        actionResult: () -> Unit = {}
-    ) {
-        var container = parentFragment?.view?.findViewById<View?>(R.id.parentContainer)
-        container ?: run {
-            container = activity?.findViewById(R.id.parentContainer)
         }
-        snackbar = container?.snackbar(title, action, length, actionResult = actionResult)
     }
 
     fun showSnackbar(
@@ -86,7 +75,12 @@ abstract class BaseFragment : DaggerFragment() {
         container ?: run {
             container = activity?.findViewById(R.id.parentContainer)
         }
-        snackbar = container?.snackbar(title, action, length, actionResult = actionResult)
+        snackbar = container?.snackbar(
+            title = title,
+            action = action,
+            length = length,
+            actionResult = actionResult
+        )
     }
 
     private fun dispose() {

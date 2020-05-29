@@ -26,6 +26,7 @@
     <string name="outside_error">Must be the same or smaller than the topRight</string>
     <string name="cardinal_error">Must be one of the four cardinal points: N E S W</string>
     <string name="movement_error">Can only contains L, R and M</string>
+
     <string name="ok">OK</string>
     <string name="result">The result of the Mars Rover is: %s</string>
 </resources>

@@ -10,6 +10,6 @@ class RoverModule {
 
     @Provides
     @Singleton
-    fun rover(): Rover = Rover.Builder().create()
+    fun rover(): Rover = Rover().build()
 
 }

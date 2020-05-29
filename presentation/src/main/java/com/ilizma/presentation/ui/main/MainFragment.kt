@@ -90,15 +90,18 @@ class MainFragment : BaseFragment() {
             }
             .addTo(compositeDisposable)
 
-        sendBtn.setOnReactiveClickListener {
-            mainViewModel.sendData(
-                topRightCornerXCoordinate = topRightCornerXCoordinateEtv.text.toString().toInt(),
-                topRightCornerYCoordinate = topRightCornerYCoordinateEtv.text.toString().toInt(),
-                roverPositionXCoordinate = roverPositionXCoordinateEtv.text.toString().toInt(),
-                roverPositionYCoordinate = roverPositionYCoordinateEtv.text.toString().toInt(),
-                roverDirection = roverDirectionEtv.text.toString(),
-                roverMovements = roverMovementsEtv.text.toString()
-            )
+        setListeners()
+    }
+
+    private fun setUpViewModel() {
+        mainViewModel = viewModel(viewModelFactory.get()) {
+
+            observe(ldLoading, ::handleLoadingState)
+
+            observe(ldRoverData, ::showResult)
+
+            observe(ldFailure, ::handleFailure)
+
         }
     }
 
@@ -193,17 +196,21 @@ class MainFragment : BaseFragment() {
             }
         }
 
-    private fun isOutsidePlateau(text: CharSequence, etv: EditText) =
-        etv.text.toString().isEmpty() || text.toString().toInt() > etv.text.toString().toInt()
-
-    private fun setUpViewModel() {
-        mainViewModel = viewModel(viewModelFactory.get()) {
-
-            observe(ldLoading, ::handleLoadingState)
-
-            observe(ldRoverData, ::showResult)
+    private fun setListeners() {
+        sendBtn.setOnReactiveClickListener {
+            mainViewModel.sendData(
+                topRightCornerXCoordinate = topRightCornerXCoordinateEtv.text.toString().toInt(),
+                topRightCornerYCoordinate = topRightCornerYCoordinateEtv.text.toString().toInt(),
+                roverPositionXCoordinate = roverPositionXCoordinateEtv.text.toString().toInt(),
+                roverPositionYCoordinate = roverPositionYCoordinateEtv.text.toString().toInt(),
+                roverDirection = roverDirectionEtv.text.toString(),
+                roverMovements = roverMovementsEtv.text.toString()
+            )
         }
     }
+
+    private fun isOutsidePlateau(text: CharSequence, etv: EditText) =
+        etv.text.toString().isEmpty() || text.toString().toInt() > etv.text.toString().toInt()
 
     private fun handleLoadingState(loading: Boolean) {
         if (loading) {

@@ -8,15 +8,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ilizma.presentation.ui.base.BaseViewModel
 
-inline fun <reified T : BaseViewModel> FragmentActivity.viewModel(
-    factory: ViewModelProvider.Factory,
-    body: T.() -> Unit
-): T {
-    val vm = ViewModelProvider(this, factory)[T::class.java]
-    vm.body()
-    return vm
-}
-
 inline fun <reified T : BaseViewModel> Fragment.viewModel(
     factory: ViewModelProvider.Factory,
     body: T.() -> Unit = {}
@@ -24,17 +15,6 @@ inline fun <reified T : BaseViewModel> Fragment.viewModel(
     val vm = ViewModelProvider(this, factory)[T::class.java]
     vm.body()
     return vm
-}
-
-inline fun <reified T : BaseViewModel> Fragment.viewModelFromActivity(
-    factory: ViewModelProvider.Factory,
-    body: T.() -> Unit
-): T? {
-    return activity?.let {
-        val vm = ViewModelProvider(it, factory)[T::class.java]
-        vm.body()
-        vm
-    }
 }
 
 fun <T> LifecycleOwner.observe(liveData: LiveData<T>, action: (t: T) -> Unit) {
