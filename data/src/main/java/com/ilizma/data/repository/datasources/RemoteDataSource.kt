@@ -1,19 +1,16 @@
 package com.ilizma.data.repository.datasources
 
-import androidx.annotation.VisibleForTesting
 import com.ilizma.data.entity.DataRequest
 import com.ilizma.domain.base.Failure
 import com.ilizma.roverlib.Rover
 import com.ilizma.roverlib.base.IncorrectDirection
 import com.ilizma.roverlib.base.IncorrectMovement
-import com.ilizma.roverlib.base.NoData
-import com.ilizma.roverlib.base.ParseFailed
-import com.squareup.moshi.Moshi
+import com.squareup.moshi.JsonAdapter
 import io.reactivex.Single
 import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(
-    val moshi: Moshi,
+    val jsonAdapter: JsonAdapter<DataRequest>,
     val rover: Rover
 ) {
 
@@ -37,7 +34,7 @@ class RemoteDataSource @Inject constructor(
             roverDirection,
             roverMovements
         )
-        val dataRequestJson = convertToJson(dataRequest)
+        val dataRequestJson = jsonAdapter.toJson(dataRequest)
         return Single.create { emitter ->
             try {
                 val result = rover.move(dataRequestJson)
@@ -50,11 +47,6 @@ class RemoteDataSource @Inject constructor(
                 }
             }
         }
-    }
-
-    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    fun convertToJson(dataRequest: DataRequest): String {
-        return moshi.adapter(DataRequest::class.java).toJson(dataRequest)
     }
 
 }
