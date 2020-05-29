@@ -1,10 +1,10 @@
 package com.ilizma.marsrover.di.module.presentation
 
 import androidx.lifecycle.ViewModelProvider
-import com.ilizma.presentation.ui.base.BaseViewModel
-import com.ilizma.presentation.ui.main.MainViewModel
 import com.ilizma.marsrover.di.viewmodel.ViewModelFactory
 import com.ilizma.marsrover.di.viewmodel.ViewModelKey
+import com.ilizma.presentation.ui.base.BaseViewModel
+import com.ilizma.presentation.ui.main.MainViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

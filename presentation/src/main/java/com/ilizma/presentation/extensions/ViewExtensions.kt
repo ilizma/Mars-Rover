@@ -26,14 +26,6 @@ fun View.invisible() {
     visibility = View.INVISIBLE
 }
 
-fun View.disable() {
-    isEnabled = false
-}
-
-fun View.enable() {
-    isEnabled = true
-}
-
 fun View.setOnReactiveClickListener(
     throttleInMillis: Long = 500,
     action: (() -> Unit)?
@@ -72,9 +64,9 @@ fun View.snackbar(
     @ColorRes actionColor: Int = R.color.colorPrimary,
     actionResult: () -> Unit = {}
 ): Snackbar = snackbar(
-    context.getString(titleRes),
-    context.getString(actionRes),
-    length,
-    actionColor,
-    actionResult
+    title = context.getString(titleRes),
+    action = context.getString(actionRes),
+    length = length,
+    actionColor = actionColor,
+    actionResult = actionResult
 )

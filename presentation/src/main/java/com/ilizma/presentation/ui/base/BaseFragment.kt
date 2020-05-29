@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
@@ -47,7 +46,7 @@ abstract class BaseFragment : DaggerFragment() {
         super.onDestroy()
     }
 
-    protected fun dismissSnackbar() {
+    private fun dismissSnackbar() {
         snackbar?.dismiss()
     }
 
@@ -66,19 +65,6 @@ abstract class BaseFragment : DaggerFragment() {
         }
     }
 
-    fun showSnackbarWithRes(
-        @StringRes title: Int,
-        @StringRes action: Int,
-        length: Int = Snackbar.LENGTH_LONG,
-        actionResult: () -> Unit = {}
-    ) {
-        var container = parentFragment?.view?.findViewById<View?>(R.id.parentContainer)
-        container ?: run {
-            container = activity?.findViewById(R.id.parentContainer)
-        }
-        snackbar = container?.snackbar(title, action, length, actionResult = actionResult)
-    }
-
     fun showSnackbar(
         title: String,
         action: String,
@@ -89,7 +75,12 @@ abstract class BaseFragment : DaggerFragment() {
         container ?: run {
             container = activity?.findViewById(R.id.parentContainer)
         }
-        snackbar = container?.snackbar(title, action, length, actionResult = actionResult)
+        snackbar = container?.snackbar(
+            title = title,
+            action = action,
+            length = length,
+            actionResult = actionResult
+        )
     }
 
     private fun dispose() {
