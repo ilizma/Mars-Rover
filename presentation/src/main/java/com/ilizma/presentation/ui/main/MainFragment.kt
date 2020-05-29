@@ -202,6 +202,9 @@ class MainFragment : BaseFragment() {
             observe(ldLoading, ::handleLoadingState)
 
             observe(ldRoverData, ::showResult)
+
+            observe(ldFailure, ::handleFailure)
+
         }
     }
 
