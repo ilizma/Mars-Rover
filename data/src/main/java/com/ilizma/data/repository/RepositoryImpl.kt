@@ -9,7 +9,21 @@ class RepositoryImpl @Inject constructor(
     private val remoteDataSource: RemoteDataSource
 ) : Repository {
 
-    override fun sendData(): Single<String> =
-        remoteDataSource.sendData()
+    override fun sendData(
+        topRightCornerXCoordinate: Int,
+        topRightCornerYCoordinate: Int,
+        roverPositionXCoordinate: Int,
+        roverPositionYCoordinate: Int,
+        roverDirection: String,
+        roverMovements: String
+    ): Single<String> =
+        remoteDataSource.sendData(
+            topRightCornerXCoordinate = topRightCornerXCoordinate,
+            topRightCornerYCoordinate = topRightCornerYCoordinate,
+            roverPositionXCoordinate = roverPositionXCoordinate,
+            roverPositionYCoordinate = roverPositionYCoordinate,
+            roverDirection = roverDirection,
+            roverMovements = roverMovements
+        )
 
 }

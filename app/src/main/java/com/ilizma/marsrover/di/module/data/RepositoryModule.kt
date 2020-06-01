@@ -9,6 +9,6 @@ import dagger.Module
 abstract class RepositoryModule {
 
     @Binds
-    abstract fun login(repositoryImpl: RepositoryImpl): Repository
+    abstract fun repository(repositoryImpl: RepositoryImpl): Repository
 
 }

@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import androidx.annotation.StringRes
+import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.ilizma.presentation.R
 import com.ilizma.presentation.extensions.hideKeyboard
+import com.ilizma.presentation.extensions.inflate
 import com.ilizma.presentation.extensions.snackbar
 import dagger.Lazy
 import dagger.android.support.DaggerFragment
@@ -32,8 +33,7 @@ abstract class BaseFragment : DaggerFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? =
-        inflater.inflate(fragmentLayout, container, false)
+    ): View? = container?.inflate(fragmentLayout)
 
     override fun onPause() {
         dismissSnackbar()
@@ -46,21 +46,23 @@ abstract class BaseFragment : DaggerFragment() {
         super.onDestroy()
     }
 
-    protected fun dismissSnackbar() {
+    private fun dismissSnackbar() {
         snackbar?.dismiss()
     }
 
-    fun showSnackbarWithRes(
-        @StringRes title: Int,
-        @StringRes action: Int,
-        length: Int = Snackbar.LENGTH_LONG,
-        actionResult: () -> Unit = {}
-    ) {
-        var container = parentFragment?.view?.findViewById<View?>(R.id.parentContainer)
-        container ?: run {
-            container = activity?.findViewById(R.id.parentContainer)
+    protected fun showDialog(fragment: DialogFragment) {
+        dismissSnackbar()
+        if (activity != null
+            && requireActivity().isFinishing.not()
+            && parentFragmentManager.isDestroyed.not()
+            && parentFragmentManager.isStateSaved.not()
+        ) {
+            try {
+                fragment.show(parentFragmentManager, fragment::class.simpleName)
+            } catch (e: IllegalStateException) {
+                e.printStackTrace()
+            }
         }
-        snackbar = container?.snackbar(title, action, length, actionResult = actionResult)
     }
 
     fun showSnackbar(
@@ -73,7 +75,12 @@ abstract class BaseFragment : DaggerFragment() {
         container ?: run {
             container = activity?.findViewById(R.id.parentContainer)
         }
-        snackbar = container?.snackbar(title, action, length, actionResult = actionResult)
+        snackbar = container?.snackbar(
+            title = title,
+            action = action,
+            length = length,
+            actionResult = actionResult
+        )
     }
 
     private fun dispose() {

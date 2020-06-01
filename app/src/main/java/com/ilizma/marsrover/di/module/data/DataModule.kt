@@ -4,7 +4,8 @@ import dagger.Module
 
 @Module(
     includes = [
-        RepositoryModule::class
+        RepositoryModule::class,
+        JsonModule::class
     ]
 )
 class DataModule

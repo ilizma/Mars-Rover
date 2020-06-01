@@ -36,6 +36,12 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 
+    // region implementations in data and app gradles
+    //moshi
+    api "com.squareup.moshi:moshi-kotlin:$moshiVersion"
+    // endregion
+
     implementation project(':domain')
+    implementation project(':roverlib')
     testImplementation project(path: ':domain', configuration: 'unitTestImplementation')
 }
